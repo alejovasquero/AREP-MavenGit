@@ -2,15 +2,20 @@ package edu.escuelaing.arep.mavengit;
 
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
-public class LinkedList<E> implements Collection<E> {
+/**
+ * Implementación para una lista enlazada
+ * @param <E> Tipo generico con el que vamos a llenar la lista enlazada
+ * @author Alejandro Vasquez
+ */
+public class LinkedList<E>  implements Collection<E> {
     
     private Node<E> head;
 
+    /**
+     * Constructor de una lista elzada sencilla
+     */
     public LinkedList(){
         head = null;
     }
@@ -23,7 +28,15 @@ public class LinkedList<E> implements Collection<E> {
         h.add(100);
         System.out.println(h.size());
         System.out.println(h);
+        for(Integer e: h){
+            System.out.println(e);
+        }
     }
+
+    /**
+     * Numero de elementos de la lista enlazada
+     * @return Cantidad de elementos de la lista enlazada
+     */
     public int size() {
         Node<E> current = head;
         int size = 0;
@@ -35,6 +48,10 @@ public class LinkedList<E> implements Collection<E> {
     }
 
 
+    /**
+     * Consulta si la lista contiene o no elementos
+     * @return La lista tiene elementos
+     */
     public boolean isEmpty() {
         return head==null;
     }
@@ -43,10 +60,18 @@ public class LinkedList<E> implements Collection<E> {
         return false;
     }
 
+    /**
+     * Retorna un iterador sobre la lista enlazada
+     * @return Iterador de los elementos internos de la lista
+     */
     public Iterator iterator() {
-        return null;
+        return new LinkedListIterator();
     }
 
+    /**
+     * Convierte la lista enlazada en un arreglo de objetos
+     * @return Arreglo de objetos que contienen a los elementos de la lista en orden de almacenamiento
+     */
     public Object[] toArray() {
         Object[] ans =  new Object[size()];
         Node<E> current  = head;
@@ -61,6 +86,11 @@ public class LinkedList<E> implements Collection<E> {
         return null;
     }
 
+    /**
+     * Inserta un elemento al final de la lista
+     * @param o Elemento a insertar
+     * @return Si la insercion al final de la lista fue exitosa
+     */
     public boolean add(E o) {
         Node<E> last = getLast();
         if(last == null){
@@ -95,9 +125,11 @@ public class LinkedList<E> implements Collection<E> {
         return false;
     }
 
-
-
-    public Node<E> getLast(){
+    /**
+     * Retorna el ultimo elemento de la lista enlzada
+     * @return Ultimo elemento de la lista enzalada, null si está vacía
+     */
+    private  Node<E> getLast(){
         Node<E> last = head;
         while(last!= null && last.getNextNode()!=null){
             last = last.getNextNode();
@@ -105,7 +137,53 @@ public class LinkedList<E> implements Collection<E> {
         return last;
     }
 
+    /**
+     * Convierte la lista a una representación en cadena
+     * @return Cadena que contiene los elementos de la lista en forma de arreglo
+     */
     public String toString(){
         return Arrays.toString(toArray());
     }
+
+    /**
+     * Ietarador de la lista enlazada
+     */
+    private class LinkedListIterator implements Iterator<E>{
+        private Node<E> nextNode;
+
+        public LinkedListIterator(){
+            nextNode = head;
+        }
+
+        /**
+         * Retorna si el iterador tiene aún elemento por retornar de la lista
+         * @return Si existe algun elemento por iterar
+         */
+        @Override
+        public boolean hasNext() {
+            return nextNode!=null;
+        }
+
+        /**
+         * Retorna el siguiente valor de la lista
+         * @return Siguiente valor de la lista segun el iterador
+         */
+        @Override
+        public E next() {
+            E value;
+            if(!hasNext()){
+                throw new NoSuchElementException();
+            } else {
+                value=nextNode.getValue();
+                nextNode=nextNode.getNextNode();
+            }
+            return value;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+    }
+
 }
