@@ -8,6 +8,7 @@ package edu.escuelaing.arep.mavengit;
 public class Node<E> {
     private E value;
     private Node<E> nextNode;
+    private Node<E> priorNode;
 
     /**
      * Constructor de un nodo con valor y nodo siguiente, que por defecto es null
@@ -16,6 +17,7 @@ public class Node<E> {
     public Node(E value){
         this.value = value;
         nextNode = null;
+        priorNode = null;
     }
 
     /**
@@ -43,11 +45,23 @@ public class Node<E> {
     }
 
     /**
+     * Retorna el nodo anterior
+     * @return Retorna el nodo anterior, null si no hay anterior
+     */
+    public Node<E> getPriorNode(){
+        return priorNode;
+    }
+
+    /**
      * Cambia el nodo siguiente
      * @param node Nuevo nodo siguiente
      */
     public void setNextNode(Node<E> node){
         nextNode = node;
+    }
+
+    public void setPriorNode(Node<E> node){
+        priorNode = node;
     }
 }
 

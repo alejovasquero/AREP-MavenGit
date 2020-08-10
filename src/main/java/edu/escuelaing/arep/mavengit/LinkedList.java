@@ -96,14 +96,48 @@ public class LinkedList<E>  implements Collection<E> {
         if(last == null){
             head = new Node<E>(o);
         } else {
-            last.setNextNode(new Node<E>(o));
+            Node<E> newnode =new Node<E>(o);
+            newnode.setPriorNode(last);
+            last.setNextNode(newnode);
         }
         return true;
     }
 
+    /**
+     * Remueve un nodo de la lista
+     * @param o Valor del elemento a eliminar
+     * @return Si la eliminación fue exitosa
+     */
     public boolean remove(Object o) {
-        return false;
+        Node<E> current = head;
+        boolean done=false;
+        if(head !=null && o.equals(head.getValue())) {
+            head = head.getNextNode();
+        }
+        while(current!=null && !done){
+            if(o.equals(current.getValue())){
+                putNodes(current.getPriorNode(), current.getNextNode());
+                done=true;
+            }
+            current=current.getNextNode();
+        }
+        return done;
     }
+
+    /**
+     * Enlzada dos nodos para que sean continuos en la lista enlazada
+     * @param priorNode Nodo anterior al nodo siguiente
+     * @param nextNode Nodo continuo al nodo anterior
+     */
+    private void putNodes(Node<E> priorNode, Node<E> nextNode){
+        if(nextNode!=null){
+            nextNode.setPriorNode(priorNode);
+        }
+        if(priorNode!=null){
+            priorNode.setNextNode(nextNode);
+        }
+    }
+
 
     public boolean addAll(Collection c) {
         return false;
