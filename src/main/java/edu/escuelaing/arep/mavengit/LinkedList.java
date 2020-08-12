@@ -138,9 +138,16 @@ public class LinkedList<E>  implements Collection<E> {
         }
     }
 
-
-    public boolean addAll(Collection c) {
-        return false;
+    /**
+     * Añade todos los objetos entregados a la lista enlzada
+     * @param c Colleccion de objetos a añadir a la lista
+     * @return Si la insercion fue exitosa
+     */
+    public boolean addAll(Collection<? extends E> c) {
+        for(E e: c){
+            add(e);
+        }
+        return true;
     }
 
     public void clear() {

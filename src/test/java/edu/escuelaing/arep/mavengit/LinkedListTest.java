@@ -1,5 +1,6 @@
 package edu.escuelaing.arep.mavengit;
 
+import javafx.print.Collation;
 import junit.framework.TestCase;
 
 
@@ -9,7 +10,11 @@ import static org.junit.Assert.assertFalse;
 import jdk.internal.jline.internal.TestAccessible;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.Assert.fail;
 import static org.junit.Assert.assertEquals;
@@ -18,6 +23,7 @@ import static org.junit.Assert.assertNotNull;
 
 
 public class LinkedListTest  {
+    private static Double TOLERANCE=0.1d;
 
     /**
      * Rigourous Test :-)
@@ -98,5 +104,58 @@ public class LinkedListTest  {
 
         assertTrue(list1.remove("Add"));
         assertEquals(list1.toArray(), new String[]{"Hello", "Tee","Man"});
+    }
+
+
+    @Test
+    public void shouldInsertAll(){
+        ArrayList places = new ArrayList();
+        places.add(true);
+        places.add("Hello");
+        places.add("e");
+        places.add(1);
+        LinkedList<String> list= new LinkedList<String>();
+        list.addAll(places);
+
+        assertEquals(new Object[]{true, "Hello", "e", 1}, list.toArray());
+    }
+
+    @Test
+    public void shouldCalculateMean(){
+        String file = "src\\test\\resources\\Statistics\\Test1.txt";
+        LinkedList<Double> l = new LinkedList<Double>();
+        StatisticsPackage.readSamples(file, l);
+        assertTrue(Math.abs(StatisticsPackage.calculateMean(l)- 550.6)< TOLERANCE);
+
+        file = "src\\test\\resources\\Statistics\\Test2.txt";
+        l = new LinkedList<Double>();
+        StatisticsPackage.readSamples(file, l);
+        assertTrue(Math.abs(StatisticsPackage.calculateMean(l)- 60.32)< TOLERANCE);
+
+
+        file = "src\\test\\resources\\Statistics\\Test3.txt";
+        l = new LinkedList<Double>();
+        StatisticsPackage.readSamples(file, l);
+        assertTrue(Math.abs(StatisticsPackage.calculateMean(l)- 638.9)< TOLERANCE);
+    }
+
+
+    @Test
+    public void shouldCalculateDeviation(){
+        String file = "src\\test\\resources\\Statistics\\Test1.txt";
+        LinkedList<Double> l = new LinkedList<Double>();
+        StatisticsPackage.readSamples(file, l);
+        assertTrue(Math.abs(StatisticsPackage.calculateDeviation(l)- 572.03)< TOLERANCE);
+
+        file = "src\\test\\resources\\Statistics\\Test2.txt";
+        l = new LinkedList<Double>();
+        StatisticsPackage.readSamples(file, l);
+        assertTrue(Math.abs(StatisticsPackage.calculateDeviation(l)- 62.26)< TOLERANCE);
+
+        file = "src\\test\\resources\\Statistics\\Test3.txt";
+        l = new LinkedList<Double>();
+        StatisticsPackage.readSamples(file, l);
+        System.out.println(StatisticsPackage.calculateDeviation(l));
+        assertTrue(Math.abs(StatisticsPackage.calculateDeviation(l)- 625.633981)< TOLERANCE);
     }
 }

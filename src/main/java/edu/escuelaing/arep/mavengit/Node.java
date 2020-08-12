@@ -60,6 +60,10 @@ public class Node<E> {
         nextNode = node;
     }
 
+    /**
+     * Cambia el nodo siguiente
+     * @param node Nuevo nodo anterior
+     */
     public void setPriorNode(Node<E> node){
         priorNode = node;
     }
