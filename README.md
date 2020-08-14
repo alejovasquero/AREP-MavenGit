@@ -55,12 +55,12 @@ Si vamos a insertar simplemente el nombre del archivo,
 debemos tener en cuenta que la búsqueda de este archivo será
 en el directorio principal del proyecto.
 
-![Nombre del archivo](resources/test1.png)
+![](resources/test1.png)
 
 
 También podemos insertar toda la ruta de nuestro archivo dentro del sistema
 
-![Ruta del archivo](resources/test2.png)
+![](resources/test2.png)
 
 Nuestro proyecto está listo y al servicio para ser usado en lo que necesites : ).
 
@@ -74,7 +74,7 @@ y lo haremos por medio de una fase de maven, la fase __test__, del ciclo de vida
 mvn test
 ```
 
-![Tests](resources/AllTest.png)
+![](resources/AllTest.png)
 
 ### Detalle de las pruebas para la lista enlazada (LinkedListTest)
 * **sizeTest** : Pruebas del tamaño que debe tomar al insertar y eliminar
