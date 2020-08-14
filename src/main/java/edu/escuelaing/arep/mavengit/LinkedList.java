@@ -21,17 +21,6 @@ public class LinkedList<E>  implements Collection<E> {
     }
 
 
-    public static void main(String args[]){
-        LinkedList<Integer> h = new LinkedList<Integer>();
-        System.out.println(h.size());
-        h.add(1);
-        h.add(100);
-        System.out.println(h.size());
-        System.out.println(h);
-        for(Integer e: h){
-            System.out.println(e);
-        }
-    }
 
     /**
      * Numero de elementos de la lista enlazada

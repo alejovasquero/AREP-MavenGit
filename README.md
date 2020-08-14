@@ -1,88 +1,111 @@
-# Promedio y desviación estándar
+# Promedio y desviación estándar con Lista Enlazada
 
 Este proyecto contiene la implementación del cálculo de promedio y desviación estándar de una muestra poblacional.
 Para realizar los cálculos se utiliza una implementación propia de una lista enlazada que utiliza al API _**Collection**_ de java
 
-## Getting Started
+## Empezando
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Estas instrucciones te dejarán instalar y probar las funciones de estos paquetes.
+El alcance de esta instalación, ejecución de clase principal y pruebas.
 
-### Prerequisites
+ 
+### Prerrequisitos
 
-What things you need to install the software and how to install them
+Para instalar y correr exitosamente este proyecto necesitamos:
+* **Java**
+* **Maven**
+* **Git**
 
-```
-Give examples
-```
 
-### Installing
+### Instalación
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Primeramente vamos a descargar el repositorio en nuestra máquina local, y en la carpeta de 
+nuestra preferencia. En consola vamos a digitar el siguiente comando para clonar el repositorio.
 
 ```
-until finished
+git clone https://github.com/alejovasquero/AREP-MavenGit
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Entremos a el directorio del proyecto
 
 ```
-Give an example
+cd Primer-Taller
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+Debemos compilar el proyecto, que contiene las clases necesarias para poder correr nuestro
+proyecto. Por medio de maven vamos a crear todos los compilables **.class**. Desde consola, y ubicados en la carpeta donde se encuentra
+nuestra configuración de maven.
 
 ```
-Give an example
+mvn compile
 ```
 
-## Deployment
+Ahora que nuestras clases etan compiladas vamos a ejecutar la clase principal para
+ver el código en acción : )
 
-Add additional notes about how to deploy this on a live system
+```
+mvn exec:java -Dexec.mainClass="edu.escuelaing.arep.mavengit.StatisticsPackage"
+```
+Los datos del programa provienen de algún archivo de texto 
+con números decimales.
 
-## Built With
+![Inserción del nombre o ruta del archivo](resources/archivo.png)
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+Si vamos a insertar simplemente el nombre del archivo, 
+debemos tener en cuenta que la búsqueda de este archivo será
+en el directorio principal del proyecto.
 
-## Contributing
+![Nombre del archivo](resources/test1.png)
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
+También podemos insertar toda la ruta de nuestro archivo dentro del sistema
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+![Ruta del archivo](resources/test2.png)
 
-## Authors
+Nuestro proyecto está listo y al servicio para ser usado en lo que necesites : ).
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+## Corriendo las pruebas
 
-## License
+Correr las pruebas dentro del proyecto es muy sencillo, 
+y lo haremos por medio de una fase de maven, la fase __test__, del ciclo de vida __default__. 
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+```
+mvn test
+```
 
-## Acknowledgments
+![Tests](resources/AllTest.png)
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+### Detalle de las pruebas para la lista enlazada (LinkedListTest)
+* **sizeTest** : Pruebas del tamaño que debe tomar al insertar y eliminar
+* **addTest** : Pruebas de adición a la lista enlazada
+* **shouldNotRemoveTest** : Casos en los que remover no debería ser efectivo
+* **shouldRemoveTest** : Casos en los que remover debería ser efectivo
+* **shouldInsertAll** : Caso de inserción para el método del la API *Collection*, de addAll
+
+
+### Detalle de las pruebas para paquete de estadísticas (StatisticsPackageTest)
+* **shouldCalculateMean** : Pruebas con archivos de prueba con datos muestrales, y cálculo de promedio esperado
+* **shouldCalculateDeviation** : Pruebas con archivos de prueba con datos muestrales, y cálculo de desviación estándar
+
+## Construido con
+
+
+* [Maven](https://maven.apache.org/) - Manejo de dependencias
+* [Git](https://git-scm.com/) - Control de versiones
+* [Java](https://www.java.com/es/) - Lenguaje de programación
+
+
+
+## Autores
+
+* **David Alejandro Vasquez Carreño** - *Trabajo inicial* - [alejovasquero](https://github.com/alejovasquero)
+
+## Licencia
+
+Este proyecto está licenciado bajo la licencia del MIT - Vea el [LICENSE.md](LICENSE.md) para más detalles
+
+## Reconocimientos
+
+* Victor S.Adamchik
+
