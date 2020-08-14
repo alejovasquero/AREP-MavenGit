@@ -60,7 +60,7 @@ en el directorio principal del proyecto.
 
 También podemos insertar toda la ruta de nuestro archivo dentro del sistema
 
-![](resources/test2.PNG)
+![](resources/Test2.PNG)
 
 Nuestro proyecto está listo y al servicio para ser usado en lo que necesites : ).
 
