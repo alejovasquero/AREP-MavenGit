@@ -49,18 +49,18 @@ mvn exec:java -Dexec.mainClass="edu.escuelaing.arep.mavengit.StatisticsPackage"
 Los datos del programa provienen de algún archivo de texto 
 con números decimales.
 
-![Inserción del nombre o ruta del archivo](resources/archivo.png)
+![Inserción del nombre o ruta del archivo](resources/archivo.PNG)
 
 Si vamos a insertar simplemente el nombre del archivo, 
 debemos tener en cuenta que la búsqueda de este archivo será
 en el directorio principal del proyecto.
 
-![](resources/test1.png)
+![](resources/test1.PNG)
 
 
 También podemos insertar toda la ruta de nuestro archivo dentro del sistema
 
-![](resources/test2.png)
+![](resources/test2.PNG)
 
 Nuestro proyecto está listo y al servicio para ser usado en lo que necesites : ).
 
@@ -74,7 +74,7 @@ y lo haremos por medio de una fase de maven, la fase __test__, del ciclo de vida
 mvn test
 ```
 
-![](resources/AllTest.png)
+![](resources/AllTest.PNG)
 
 ### Detalle de las pruebas para la lista enlazada (LinkedListTest)
 * **sizeTest** : Pruebas del tamaño que debe tomar al insertar y eliminar
